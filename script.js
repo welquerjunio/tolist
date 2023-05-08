@@ -1,14 +1,13 @@
 const localStorageKey = 'to-do-list-wj'
 
+//validation exist task
 function validateExistsNewTask(){
     let values = JSON.parse(localStorage.getItem(localStorageKey) || "[]")
     let inputValue = document.getElementById('input-new-task').value
     let exists = values.find(x => x.name == inputValue)
     return !exists ? false:true
-
-
 }
-
+//create new task
 function newTask(){
     let input = document.getElementById('input-new-task')
     input.style.border = ''
@@ -16,7 +15,7 @@ function newTask(){
     //validation
     if(!input.value){
         input.style.border = '1px solid red'
-        alert('Digite algo para inserir em sua lista')
+        alert('Digite uma nova task no campo abaixo')
     }
     else if(validateExistsNewTask()){
         alert('Já existe uma task com essa descrição')
@@ -45,6 +44,8 @@ function showValues(){
     }
 
 }
+console.log(showValues)
+//Remove task
 function removeItem(data){
     let values = JSON.parse(localStorage.getItem(localStorageKey) || "[]")
     let index = values.findIndex(x => x.name == data)
